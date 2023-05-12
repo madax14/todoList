@@ -1,0 +1,31 @@
+<%- include("header"), -%>
+
+<body>
+    <div class="box" id="heading">
+
+        <h1> <%= listTittle %> </h1>
+
+    </div>
+<div class="box">
+
+    <% for (var i=0; i<newList.length; i++) { %>
+    <form action="/delete" method="post">
+    
+        <div class="item">
+            <input type="checkbox" name="checkbox" value="<%= newList[i]._id %>" onChange="this.form.submit()">
+            <p><%= newList[i].Name %> </p>
+            <!-- include a hidden input to get  the tittle name, the input above already have its value been used -->
+            <input id="tittleName" type="hidden" name="tittleName" value="<%= listTittle %>">
+        </div>
+       
+    </form>
+    <% } %>
+
+    <form class="item" action="/" method="post">
+            <input name="newTask" type="text"  placeholder="New item" autocomplete="off">
+            <button name="list" value="<%= listTittle %>" type="submit">+</button>
+    </form>
+            
+</div>
+
+         <%- include("footer"), -%>
